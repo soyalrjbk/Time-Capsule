@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <title>Time Capsule</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1></span>⌮ Profile Page</h1> 
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- Second -->
+        <div class="col-sm-6">
+          <h3>⏳ Sealed Capsules: </h3>
+          <ul class="capsules">
+            <% for (let i = 0; i < capsules.length; i++) { %>
+                <!-- If the current date have reached the unlock date, show the title and message -->
+                <% if (capsules[i].unlockDate<=new Date()){ %>
+                <li class="capsule" data-id="<%= capsules[i]._id %>">🔑 <%= capsules[i].title %> - <%= capsules[i].message %>
+                <span><button class="delete">Delete</button></span>
+                </li>
+                <!-- If the current date have not reached the unlock date, only show the title (the message is hidden) -->
+                <% } else{ %>
+                <li class="capsule" data-id="<%= capsules[i]._id %>">🔒 <%= capsules[i].title %>
+                <span><button class="delete">Delete</button></span>
+                <span><input type="text" class="edit" placeholder="Edit your sealed message"><button class="save">Save</button></span> 
+                </li>
+               <% } %>
+            <% } %>
+          </ul>
+
+          <hr>
+
+          <!-- First -->
+          <h2>Seal a Time Capsule</h2>
+        <% if (user.local.email) { %>
+          <form action="/capsules" method="POST" class="dan">
+            <input type="text" name="title" placeholder="e.g. Japan Trip 🎌 🌅" >
+            <textarea name="message" placeholder="Write something for your future self ✍️"></textarea>
+            <input type="date" name="unlockDate" class="date">
+            <button type="submit" class="sub">Seal Capsule</button>
+          </form>
+        </div>
+        <% } %>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>

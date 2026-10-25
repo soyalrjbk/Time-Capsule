@@ -1,0 +1,37 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  font-family:Comic Sans MS;
+  background: url('img/background.jpg') center / cover no-repeat fixed;
+}
+img{
+  height: 200px;
+}
+.vim{
+  background:rgb(91, 162, 122);
+  border-radius:5px;
+}
+.dan{
+  display:flex;
+  flex-direction:column;
+  max-width:400px;
+  margin: 0 auto;
+}
+.dan input::placeholder, textarea::placeholder, date::placeholder{
+  text-align:center;
+}
+h2, h3, ul{
+  text-align:center;
+  list-style: none;
+}
+.col-sm-6{
+  float:none;
+  margin:0 auto;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  padding: 20px;
+}
+.sub{
+  background: rgb(90, 236, 231);
+}
